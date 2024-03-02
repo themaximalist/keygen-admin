@@ -27,8 +27,12 @@
                 <td class="full mono"><%= license.id %></td>
             </tr>
             <tr>
-                <td>LICENSE KEY</td>
+                <td>KEY</td>
                 <td class="full mono"><%= license.attributes.key %></td>
+            </tr>
+            <tr>
+                <td>EMAIL</td>
+                <td class="full mono"><%= license.attributes.metadata.email %></td>
             </tr>
             <tr>
                 <td>PRODUCT ID</td>
@@ -44,7 +48,7 @@
             </tr>
             <tr>
                 <td>LAST VALIDATED</td>
-                <td class="full mono"><%= license.attributes.lastValidated %></td>
+                <td class="full mono"><%= license.attributes.lastValidated || "never" %></td>
             </tr>
             <tr>
                 <td>CREATED</td>

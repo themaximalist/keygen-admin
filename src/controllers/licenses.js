@@ -8,22 +8,16 @@ export async function show(req, res) {
 }
 
 export async function create(req, res) {
-    const { product_id } = req.params;
+    const { product_id, policy_id } = req.params;
     const product = await keygen.getProduct(api_key, product_id);
-    // TODO: get policies for product
-    // TODO: select which policy for license
-    res.render('create_license', { product });
+    const policies = await keygen.getPolicies(api_key, product_id);
+    res.render('create_license', { product, policies });
 }
 
 export async function handle_create(req, res) {
     const { product_id } = req.params;
-    const product = await keygen.getProduct(api_key, product_id);
+    const { policy_id, email } = req.body;
 
-    const { data } = req.body;
-    try {
-        const policy = await keygen.createPolicy(api_key, product.id, attributes);
-        return res.redirect(`/product/${product.id}`);
-    } catch (e) {
-        return res.render('create_policy', { error: "Invalid JSON data", data, product });
-    }
+    const license = await keygen.createLicense(api_key, policy_id, { email });
+    return res.redirect(`/license/${license.id}`);
 }

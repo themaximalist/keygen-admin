@@ -30,6 +30,19 @@
         <form method="POST" action="/product/<%= product.id %>/licenses/create" class="flex flex-col gap-2">
             <div class="font-bold text-xl mb-4"><%= product.attributes.name %></div>
 
+            <label>
+                <select name="policy_id">
+                    <% policies.forEach(function(policy) { %>
+                    <option value="<%= policy.id %>"><%= policy.attributes.name %></option>
+                    <% }) %>
+                </select>
+            </label>
+
+            <label>
+                <div>Email</div>
+                <input type="email" name="email" class="w-full rounded-md border border-gray-300 p-2" required />
+            </label>
+
             <input type="submit" value="Create License" class="bg-blue-500 text-white rounded-md p-2 cursor-pointer" />
         </form>
     </div>

@@ -118,7 +118,11 @@
                 <td class="mono"><%= license.id.split("-")[0] %></td>
                 <td><%= license.attributes.status %></td>
                 <td>
+                    <% if (license.attributes.lastValidated === null) { %>
+                    never
+                    <% } else { %>
                     <%= license.attributes.lastValidated.split("T")[0] %>
+                    <% } %>
                 </td>
                 <td>
                     <%= license.attributes.created.split("T")[0] %>
