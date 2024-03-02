@@ -1,0 +1,4 @@
+.DS_Store
+.sessions/
+node_modules/
+.env

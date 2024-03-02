@@ -1,0 +1,43 @@
+<%- include("partials/header") %>
+<div class="pt-8">
+    <h1 class="text-3xl"><%= product.attributes.name %></h1>
+    <div class="flex flex-col gap-2 my-4 text-xs">
+        <div class="font-mono">
+            PRODUCT ID: <%= product.id %>
+        </div>
+        <div class="font-mono">
+            ACCOUNT ID: <%= process.env.KEYGEN_ACCOUNT_ID %>
+        </div>
+
+        <div class="font-mono">
+            CREATED: <%= product.attributes.created %>
+        </div>
+
+
+        <hr class="my-8" />
+
+        <h1 class="text-xl">Policies</h1>
+        <table>
+            <% for (const policy of policies) { %>
+            <tr>
+                <td class="text-lg p-2 bg-gray-50 border-b border-white">
+                    <div><%= policy.attributes.name %></div>
+                    <div class="font-mono text-xs flex flex-col gap-1">
+                        <div>ID: <%= policy.id %></div>
+                        <div>DURATION: <%= policy.attributes.duration || "none" %></div>
+                        <div>STRICT: <%= policy.attributes.strict %></div>
+                        <div>FLOATING: <%= policy.attributes.floating %></div>
+                        <div>MAX MACHINES: <%= policy.attributes.maxMachines %></div>
+                        <div>MACHINE UNIQUENESS STRATEGY: <%= policy.attributes.machineUniquenessStrategy %></div>
+                        <div>MACHINE MATCHING STRATEGY: <%= policy.attributes.machineMatchingStrategy %></div>
+                </td>
+                <td class="text-gray-600 p-2 align-top bg-gray-50 border-b border-white">
+                    <%= policy.attributes.created %>
+                </td>
+            </tr>
+            <% } %>
+        </table>
+
+    </div>
+</div>
+<%- include("partials/footer") %>

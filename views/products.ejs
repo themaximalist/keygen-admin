@@ -1,0 +1,24 @@
+<%- include("partials/header") %>
+<div class="pt-8">
+    <h1 class="text-3xl">Products</h1>
+    <div class="flex flex-col gap-4 my-4">
+        <table>
+            <% for (const product of products) { %>
+            <tr>
+                <td class="text-lg p-2 bg-gray-50 border-b border-white">
+                    <a href="/product/<%= product.id %>">
+                        <div><%= product.attributes.name %></div>
+                        <div class="font-mono text-xs">
+                            <%= product.id %>
+                        </div>
+                    </a>
+                </td>
+                <td class="text-gray-600 p-2 align-top bg-gray-50 border-b border-white">
+                    <%= product.attributes.created %>
+                </td>
+            </tr>
+            <% } %>
+        </table>
+    </div>
+</div>
+<%- include("partials/footer") %>

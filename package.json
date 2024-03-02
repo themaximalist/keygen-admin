@@ -1,0 +1,37 @@
+{
+    "name": "keygen-admin",
+    "version": "0.0.1",
+    "description": "Admin Server for Self-Hosted Keygen License Management Server",
+    "type": "module",
+    "repository": "themaximal1st/keygen-admin",
+    "main": "src/index.js",
+    "scripts": {
+        "start": "npm run server",
+        "dev": "npm run watch",
+        "test": "vitest",
+        "cachebust": "echo $(( $(cat public/cachebust.txt) + 1 )) > public/cachebust.txt",
+        "server": "node src/index.js",
+        "watch": "nf -j Procfile.dev start",
+        "build": "npm run build:css",
+        "build:css": "npx tailwindcss -i ./src/app.css -o ./public/app.css",
+        "watch:server": "nodemon npm run server",
+        "watch:css": "npx tailwindcss -i ./src/app.css -o ./public/app.css --watch"
+    },
+    "keywords": [
+        "keygen",
+        "admin",
+        "dashboard",
+        "license-management"
+    ],
+    "author": "The Maximalist",
+    "license": "MIT",
+    "dependencies": {
+        "@themaximalist/hummingbird.js": "^0.0.4",
+        "dotenv-extended": "^2.9.0",
+        "@tailwindcss/forms": "^0.5.7",
+        "@tailwindcss/typography": "^0.5.10",
+        "debug": "^4.3.4",
+        "nodemon": "^3.0.2",
+        "tailwindcss": "^3.4.1"
+    }
+}
