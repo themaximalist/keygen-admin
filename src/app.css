@@ -3,9 +3,53 @@
 @tailwind utilities;
 
 body {
-    @apply bg-gray-50/50 max-w-3xl mx-auto p-4;
+    @apply bg-gray-800 text-gray-50 max-w-3xl mx-auto p-4;
 }
 
-.btn {
-    @apply bg-blue-500 text-white py-3 px-4 uppercase text-sm tracking-wider text-center rounded-md hover:bg-blue-600 transition-all cursor-pointer;
+table {
+    @apply w-full;
+}
+
+table th {
+    @apply py-2 text-xs text-left text-gray-400 font-medium uppercase tracking-wide;
+
+    &:first-child {
+        @apply pl-8;
+    }
+
+    &:last-child {
+        @apply pr-8;
+    }
+}
+
+table td {
+    @apply pr-3 py-2 align-middle text-sm text-gray-400 truncate;
+
+    &.full {
+        @apply w-full;
+    }
+
+    &.mono {
+        @apply font-mono;
+    }
+
+    &:first-child {
+        @apply pl-8 text-base text-gray-600;
+    }
+
+    &:last-child {
+        @apply pr-8;
+    }
+}
+
+table tr:hover td {
+    @apply bg-gray-100/50;
+}
+
+table tr td {
+    @apply border-b border-b-gray-200;
+}
+
+table tr:last-child td {
+    @apply border-b-0;
 }
