@@ -38,8 +38,14 @@
         </table>
     </div>
 
-    <div class="subheader border-t border-t-gray-200">
-        POLICIES
+    <div class="subheader border-t border-t-gray-200 flex w-full justify-between">
+        <div>POLICIES</div>
+        <a href="/product/<%= product.id %>/policies/create" class="flex gap-1 items-center no-underline">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1" stroke="currentColor" class="w-4 h-4">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v6m3-3H9m12 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+            </svg>
+
+            ADD POLICY</a>
     </div>
 
     <div class="flex flex-col gap-4 bg-gray-50 border-t py-1 border-t-gray-200 rounded-b-xl">
@@ -70,11 +76,22 @@
                 </td>
             </tr>
             <% } %>
+            <% if (policies.length === 0) { %>
+            <tr>
+                <td colspan="4">No policies found</td>
+            </tr>
+            <% } %>
         </table>
     </div>
 
-    <div class="subheader border-t border-t-gray-200">
-        LICENSES
+    <div class="subheader border-t border-t-gray-200 flex w-full justify-between">
+        <div>LICENSE</div>
+        <a href="/product/<%= product.id %>/licenses/create" class="flex gap-1 items-center no-underline">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1" stroke="currentColor" class="w-4 h-4">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v6m3-3H9m12 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+            </svg>
+
+            ADD LICENSE</a>
     </div>
 
     <div class="flex flex-col gap-4 bg-gray-50 border-t py-1 border-t-gray-200 rounded-b-xl">
@@ -106,6 +123,11 @@
                 <td>
                     <%= license.attributes.created.split("T")[0] %>
                 </td>
+            </tr>
+            <% } %>
+            <% if (licenses.length === 0) { %>
+            <tr>
+                <td colspan="6">No licenses found</td>
             </tr>
             <% } %>
         </table>

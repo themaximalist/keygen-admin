@@ -6,6 +6,16 @@ export async function index(req, res) {
     res.render('products', { products });
 }
 
+export async function handle_create(req, res) {
+    const { name } = req.body;
+    if (!name || name.trim().length === 0) {
+        return res.render('create_product', { error: "Name is required" });
+    }
+
+    const product = await keygen.createProduct(api_key, { name });
+    res.redirect(`/product/${product.id}`);
+}
+
 export async function show(req, res) {
     const { product_id } = req.params;
     const product = await keygen.getProduct(api_key, product_id);
