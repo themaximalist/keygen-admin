@@ -10,5 +10,6 @@ export async function show(req, res) {
     const { product_id } = req.params;
     const product = await keygen.getProduct(api_key, product_id);
     const policies = await keygen.getPolicies(api_key, product_id);
-    res.render('product', { product, policies });
+    const licenses = await keygen.getLicenses(api_key, product_id);
+    res.render('product', { product, policies, licenses });
 }

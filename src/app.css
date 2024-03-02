@@ -6,12 +6,16 @@ body {
     @apply bg-gray-800 text-gray-50 max-w-3xl mx-auto p-4;
 }
 
+a {
+    @apply underline;
+}
+
 table {
     @apply w-full;
 }
 
 table th {
-    @apply py-2 text-xs text-left text-gray-400 font-medium uppercase tracking-wide;
+    @apply py-2 pr-2 text-xs text-left text-gray-400 font-medium uppercase tracking-wide;
 
     &:first-child {
         @apply pl-8;
@@ -23,7 +27,7 @@ table th {
 }
 
 table td {
-    @apply pr-3 py-2 align-middle text-sm text-gray-400 truncate;
+    @apply pr-3 py-2 align-top text-sm text-gray-400 truncate;
 
     &.full {
         @apply w-full;
@@ -52,4 +56,8 @@ table tr td {
 
 table tr:last-child td {
     @apply border-b-0;
+}
+
+.subheader {
+    @apply px-8 pt-4 pb-2 text-xs text-left text-gray-400 font-medium uppercase tracking-wide;
 }

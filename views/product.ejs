@@ -1,43 +1,114 @@
 <%- include("partials/header") %>
-<div class="pt-8">
-    <h1 class="text-3xl"><%= product.attributes.name %></h1>
-    <div class="flex flex-col gap-2 my-4 text-xs">
-        <div class="font-mono">
-            PRODUCT ID: <%= product.id %>
-        </div>
-        <div class="font-mono">
-            ACCOUNT ID: <%= process.env.KEYGEN_ACCOUNT_ID %>
-        </div>
+<div class="pt-8 bg-gray-100 rounded-xl text-gray-800">
+    <div id="breadcrumbs" class="-mt-2 flex gap-1 items-center text-xs px-8">
+        <a href="/" class="text-gray-600">Keygen Admin</a>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
+            <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+        </svg>
+        <a class="text-gray-600" href="/products">Products</a>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
+            <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+        </svg>
+        <a class="text-gray-700 font-medium" href="/product/<%= product.id %>"><%= product.attributes.name %></a>
+    </div>
 
-        <div class="font-mono">
-            CREATED: <%= product.attributes.created %>
-        </div>
+    <h1 class="text-3xl my-4 px-8 flex gap-1 items-center">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 1.5H8.25A2.25 2.25 0 0 0 6 3.75v16.5a2.25 2.25 0 0 0 2.25 2.25h7.5A2.25 2.25 0 0 0 18 20.25V3.75a2.25 2.25 0 0 0-2.25-2.25H13.5m-3 0V3h3V1.5m-3 0h3m-3 18.75h3" />
+        </svg>
+
+        <%= product.attributes.name %>
+    </h1>
 
 
-        <hr class="my-8" />
-
-        <h1 class="text-xl">Policies</h1>
+    <div class="flex flex-col gap-4 bg-gray-50 border-t py-1 border-t-gray-200 rounded-b-xl">
         <table>
+            <tr>
+                <td>PRODUCT ID</td>
+                <td class="full mono"><%= product.id %></td>
+            </tr>
+            <tr>
+                <td>ACCOUNT ID</td>
+                <td class="full mono"><%= process.env.KEYGEN_ACCOUNT_ID %></td>
+            </tr>
+            <tr>
+                <td>CREATED</td>
+                <td class="full mono"><%= product.attributes.created %></td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="subheader border-t border-t-gray-200">
+        POLICIES
+    </div>
+
+    <div class="flex flex-col gap-4 bg-gray-50 border-t py-1 border-t-gray-200 rounded-b-xl">
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>ID</th>
+                    <th>Options</th>
+                    <th>Created</th>
+                </tr>
+            </thead>
+
             <% for (const policy of policies) { %>
             <tr>
-                <td class="text-lg p-2 bg-gray-50 border-b border-white">
-                    <div><%= policy.attributes.name %></div>
-                    <div class="font-mono text-xs flex flex-col gap-1">
-                        <div>ID: <%= policy.id %></div>
-                        <div>DURATION: <%= policy.attributes.duration || "none" %></div>
-                        <div>STRICT: <%= policy.attributes.strict %></div>
-                        <div>FLOATING: <%= policy.attributes.floating %></div>
-                        <div>MAX MACHINES: <%= policy.attributes.maxMachines %></div>
-                        <div>MACHINE UNIQUENESS STRATEGY: <%= policy.attributes.machineUniquenessStrategy %></div>
-                        <div>MACHINE MATCHING STRATEGY: <%= policy.attributes.machineMatchingStrategy %></div>
+                <td><%= policy.attributes.name %></td>
+                <td class="mono"><%= policy.id.split("-")[0] %></td>
+                <td class="full mono">
+                    <div>DURATION=<%= policy.attributes.duration || "-1" %></div>
+                    <div>STRICT=<%= policy.attributes.strict %></div>
+                    <div>FLOATING=<%= policy.attributes.floating %></div>
+                    <div>MAX_MACHINES=<%= policy.attributes.maxMachines || "-1" %></div>
+                    <div>UNIQUENESS=<%= policy.attributes.machineUniquenessStrategy %></div>
+                    <div>MATCHING=<%= policy.attributes.machineMatchingStrategy %></div>
                 </td>
-                <td class="text-gray-600 p-2 align-top bg-gray-50 border-b border-white">
-                    <%= policy.attributes.created %>
+                <td>
+                    <%= policy.attributes.created.split("T")[0] %>
                 </td>
             </tr>
             <% } %>
         </table>
+    </div>
 
+    <div class="subheader border-t border-t-gray-200">
+        LICENSES
+    </div>
+
+    <div class="flex flex-col gap-4 bg-gray-50 border-t py-1 border-t-gray-200 rounded-b-xl">
+        <table>
+            <thead>
+                <tr>
+                    <th>Email</th>
+                    <th>Key</th>
+                    <th>ID</th>
+                    <th>Status</th>
+                    <th>Validated</th>
+                    <th>Created</th>
+                </tr>
+            </thead>
+
+            <% for (const license of licenses) { %>
+            <tr>
+                <td>
+                    <a href="/license/<%= license.id %>">
+                        <%= license.attributes.metadata.email %>
+                    </a>
+                </td>
+                <td class="mono"><%= license.attributes.key.split("-")[0] %></td>
+                <td class="mono"><%= license.id.split("-")[0] %></td>
+                <td><%= license.attributes.status %></td>
+                <td>
+                    <%= license.attributes.lastValidated.split("T")[0] %>
+                </td>
+                <td>
+                    <%= license.attributes.created.split("T")[0] %>
+                </td>
+            </tr>
+            <% } %>
+        </table>
     </div>
 </div>
 <%- include("partials/footer") %>

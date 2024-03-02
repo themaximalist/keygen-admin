@@ -1533,11 +1533,6 @@ select {
   margin-bottom: 1rem;
 }
 
-.my-8 {
-  margin-top: 2rem;
-  margin-bottom: 2rem;
-}
-
 .-mt-2 {
   margin-top: -0.5rem;
 }
@@ -1578,12 +1573,12 @@ select {
   gap: 0.25rem;
 }
 
-.gap-2 {
-  gap: 0.5rem;
-}
-
 .gap-4 {
   gap: 1rem;
+}
+
+.gap-2 {
+  gap: 0.5rem;
 }
 
 .rounded-xl {
@@ -1595,17 +1590,8 @@ select {
   border-bottom-left-radius: 0.75rem;
 }
 
-.border-b {
-  border-bottom-width: 1px;
-}
-
 .border-t {
   border-top-width: 1px;
-}
-
-.border-white {
-  --tw-border-opacity: 1;
-  border-color: rgb(255 255 255 / var(--tw-border-opacity));
 }
 
 .border-t-gray-200 {
@@ -1621,10 +1607,6 @@ select {
 .bg-gray-50 {
   --tw-bg-opacity: 1;
   background-color: rgb(249 250 251 / var(--tw-bg-opacity));
-}
-
-.p-2 {
-  padding: 0.5rem;
 }
 
 .px-8 {
@@ -1646,27 +1628,9 @@ select {
   padding-top: 2rem;
 }
 
-.align-top {
-  vertical-align: top;
-}
-
-.font-mono {
-  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-}
-
 .text-3xl {
   font-size: 1.875rem;
   line-height: 2.25rem;
-}
-
-.text-lg {
-  font-size: 1.125rem;
-  line-height: 1.75rem;
-}
-
-.text-xl {
-  font-size: 1.25rem;
-  line-height: 1.75rem;
 }
 
 .text-xs {
@@ -1704,6 +1668,10 @@ body {
   color: rgb(249 250 251 / var(--tw-text-opacity));
 }
 
+a {
+  text-decoration-line: underline;
+}
+
 table {
   width: 100%;
 }
@@ -1711,6 +1679,7 @@ table {
 table th {
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
+  padding-right: 0.5rem;
   text-align: left;
   font-size: 0.75rem;
   line-height: 1rem;
@@ -1734,7 +1703,7 @@ table td {
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
   padding-right: 0.75rem;
-  vertical-align: middle;
+  vertical-align: top;
   font-size: 0.875rem;
   line-height: 1.25rem;
   --tw-text-opacity: 1;
@@ -1773,4 +1742,19 @@ table tr td {
 
 table tr:last-child td {
   border-bottom-width: 0px;
+}
+
+.subheader {
+  padding-left: 2rem;
+  padding-right: 2rem;
+  padding-top: 1rem;
+  padding-bottom: 0.5rem;
+  text-align: left;
+  font-size: 0.75rem;
+  line-height: 1rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.025em;
+  --tw-text-opacity: 1;
+  color: rgb(156 163 175 / var(--tw-text-opacity));
 }
