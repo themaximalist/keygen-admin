@@ -26,11 +26,12 @@
     "author": "The Maximalist",
     "license": "MIT",
     "dependencies": {
-        "@themaximalist/hummingbird.js": "^0.0.4",
-        "dotenv-extended": "^2.9.0",
         "@tailwindcss/forms": "^0.5.7",
         "@tailwindcss/typography": "^0.5.10",
+        "@themaximalist/hummingbird.js": "^0.0.4",
+        "@themaximalist/keygen.js": "^0.0.4",
         "debug": "^4.3.4",
+        "dotenv-extended": "^2.9.0",
         "nodemon": "^3.0.2",
         "tailwindcss": "^3.4.1"
     }

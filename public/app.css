@@ -1709,8 +1709,21 @@ select {
   padding-bottom: 1rem;
 }
 
+.py-8 {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+
+.pb-4 {
+  padding-bottom: 1rem;
+}
+
 .pt-8 {
   padding-top: 2rem;
+}
+
+.align-middle {
+  vertical-align: middle;
 }
 
 .font-mono {
@@ -1795,12 +1808,20 @@ select {
 }
 
 body {
+  min-height: 100vh;
+  background-image: linear-gradient(to bottom right, var(--tw-gradient-stops));
+  --tw-gradient-from: #111827 var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(17 24 39 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+  --tw-gradient-to: #374151 var(--tw-gradient-to-position);
+}
+
+#container {
   margin-left: auto;
   margin-right: auto;
   max-width: 48rem;
-  --tw-bg-opacity: 1;
-  background-color: rgb(31 41 55 / var(--tw-bg-opacity));
   padding: 1rem;
+  padding-top: 2rem;
   --tw-text-opacity: 1;
   color: rgb(249 250 251 / var(--tw-text-opacity));
 }
@@ -1841,8 +1862,8 @@ table td {
   padding-bottom: 0.5rem;
   padding-right: 0.75rem;
   vertical-align: top;
-  font-size: 0.875rem;
-  line-height: 1.25rem;
+  font-size: 1rem;
+  line-height: 1.5rem;
   --tw-text-opacity: 1;
   color: rgb(156 163 175 / var(--tw-text-opacity));
   &.full {
@@ -1853,10 +1874,6 @@ table td {
   }
   &:first-child {
     padding-left: 2rem;
-  }
-  &:first-child {
-    font-size: 1rem;
-    line-height: 1.5rem;
   }
   &:first-child {
     --tw-text-opacity: 1;
