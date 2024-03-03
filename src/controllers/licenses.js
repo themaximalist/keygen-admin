@@ -15,7 +15,6 @@ export async function create(req, res) {
 }
 
 export async function handle_create(req, res) {
-    const { product_id } = req.params;
     const { policy_id, email } = req.body;
 
     const license = await keygen.createLicense(api_key, policy_id, { email });
