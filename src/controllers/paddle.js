@@ -1,6 +1,6 @@
 import { Paddle, Environment, WebhooksValidator } from "@paddle/paddle-node-sdk"
 import keygen from "../keygen.js";
-import api_key from "../api_key.js";
+import getAPIKey from "../api_key.js";
 import mapping from "../mapping.js";
 import { sendLicenseEmail } from "../mail.js";
 
@@ -12,6 +12,8 @@ const environment = process.env.NODE_ENV === 'production' ? Environment.producti
 const paddle = new Paddle(process.env.PADDLE_API_KEY, { environment });
 
 export async function handle_webhook(req, res) {
+    const api_key = await getAPIKey();
+
     const webhook = verifyWebhook(req);
 
     if (!webhook) {
