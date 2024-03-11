@@ -53,7 +53,6 @@
             <thead>
                 <tr>
                     <th>Name</th>
-                    <th>ID</th>
                     <th>Options</th>
                     <th>Created</th>
                 </tr>
@@ -61,8 +60,7 @@
 
             <% for (const policy of policies) { %>
             <tr>
-                <td><%= policy.attributes.name %></td>
-                <td class="mono"><%= policy.id.split("-")[0] %></td>
+                <td><a href="/policy/<%= policy.id %>"><%= policy.attributes.name %></a></td>
                 <td class="full mono">
                     <div>DURATION=<%= policy.attributes.duration || "-1" %></div>
                     <div>STRICT=<%= policy.attributes.strict %></div>
