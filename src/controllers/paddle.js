@@ -1,8 +1,13 @@
 import { Paddle, Environment, WebhooksValidator } from "@paddle/paddle-node-sdk"
 import keygen from "../keygen.js";
 import getAPIKey from "../api_key.js";
-import mapping from "../mapping.js";
 import { sendLicenseEmail } from "../mail.js";
+
+const mapping = JSON.parse(process.env.PRODUCT_POLICY_MAPPING || "{}");
+if (Object.keys(mapping).length === 0) {
+    console.log("Expected PRODUCT_POLICY_MAPPING to be set")
+    process.exit(1);
+}
 
 if (process.env.NODE_ENV !== 'production') {
     WebhooksValidator.MAX_VALID_TIME_DIFFERENCE = 1000;
