@@ -23,3 +23,16 @@ export async function handle_create(req, res) {
     const license = await keygen.createLicense(api_key, policy_id, { email });
     return res.redirect(`/license/${license.id}`);
 }
+
+
+export async function handle_delete(req, res) {
+    const { license_id } = req.params;
+    const api_key = await getAPIKey();
+    const license = await keygen.getLicense(api_key, license_id);
+    if (!license) {
+        return res.status(404).send('License not found');
+    }
+
+    await keygen.deleteLicense(api_key, license.id);
+    return res.redirect(`/product/${license.relationships.product.data.id}`);
+}

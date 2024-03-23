@@ -56,6 +56,9 @@
             </tr>
         </table>
     </div>
-
+    <!-- delete -->
+    <div class="flex justify-end gap-2 p-4">
+        <a href="/license/<%= license.id %>/delete" class="text-red-500 font-bold p-2" onClick="return confirm('Are you sure?')">Delete</a>
+    </div>
 </div>
 <%- include("partials/footer") %>
