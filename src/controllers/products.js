@@ -13,8 +13,8 @@ export async function handle_create(req, res) {
         return res.render('create_product', { error: "Name is required" });
     }
 
-    const product = await keygen.createProduct(api_key, { name });
     const api_key = await getAPIKey();
+    const product = await keygen.createProduct(api_key, { name });
     res.redirect(`/product/${product.id}`);
 }
 
