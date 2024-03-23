@@ -7,10 +7,10 @@ export async function sendLicenseEmail(email, license) {
         const response = await mail.sendEmailWithTemplate({
             "From": process.env.POSTMARK_FROM_EMAIL,
             "To": email,
-            "TemplateAlias": "hypertyper-purchase-license",
+            "TemplateAlias": "thinkmachine-purchase-license",
             "TemplateModel": {
-                "product_url": "https://hypertyper.com",
-                "product_name": "HyperTyper",
+                "product_url": "https://thinkmachine.com",
+                "product_name": "Think Machine",
                 "company_name": "The Maximalist",
                 "company_address": "123 The Maximalist Lane, Silicon Forest, OR 12345",
                 "license": license,
