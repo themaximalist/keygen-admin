@@ -34,7 +34,29 @@ export async function handle_webhook(req, res) {
         return res.status(400).send("Invalid policy");
     }
 
-    const license = await keygen.createLicense(api_key, policy_id, { email: data.customerEmail });
+    if (!webhook.items) {
+        console.log("Invalid webhook data");
+        return res.status(400).send("Invalid webhook data");
+    }
+
+    const price = webhook.items[0].price;
+    if (!price) {
+        console.log("Invalid webhook data");
+        return res.status(400).send("Invalid webhook data");
+    }
+
+    if (!price.description) {
+        console.log("Invalid webhook data");
+        return res.status(400).send("Invalid webhook data");
+    }
+
+    const edition = price.description;
+
+    const license = await keygen.createLicense(api_key, policy_id, {
+        email: data.customerEmail,
+        edition,
+    });
+
     if (!license) {
         console.log("Error creating license");
         return res.status(500).send("Error creating license");

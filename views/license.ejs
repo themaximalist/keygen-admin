@@ -35,6 +35,10 @@
                 <td class="full mono"><%= license.attributes.metadata.email %></td>
             </tr>
             <tr>
+                <td>EDITION</td>
+                <td class="full mono"><%= license.attributes.metadata.edition %></td>
+            </tr>
+            <tr>
                 <td>PRODUCT ID</td>
                 <td class="full mono">
                     <a href="/product/<%= license.relationships.product.data.id %>">
