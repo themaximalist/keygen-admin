@@ -26,6 +26,11 @@ export async function handle_webhook(req, res) {
         return res.status(401).send("Invalid webhook signature");
     }
 
+    if (webhook.origin === "subscription_recurring") {
+        console.log("Ignoring recurring subscription");
+        return res.send("OK");
+    }
+
     const data = await fetchData(webhook);
 
     const policy_id = mapping[data.productId];
